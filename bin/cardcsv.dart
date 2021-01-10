@@ -49,12 +49,12 @@ List<List<String>> _format(String raw) {
         e.removeLast();
       });
     }
-  } else if (list[0].length == 8) {
+  } else if (list[0].length == 9) {
     list = list
         .map((e) => [
-              '${e[0].substring(0, 4)}/${e[0].substring(4, 6)}/${e[0].substring(6, 8)}',
+              '20${e[0].substring(0, 2)}/${e[0].substring(2, 4)}/${e[0].substring(4, 6)}',
               e[2],
-              e[4]
+              e[6]
             ])
         .cast<List<String>>()
         .toList();
