@@ -43,6 +43,20 @@ List<List<String>> _format(String raw) {
       list.forEach((e) {
         e.removeRange(3, 7);
       });
+    } else if (reg.hasMatch(list[0][0])) {
+      list = list.reversed
+          .where((e) => !['PayPayポイント運用に支払い', 'ボーナス運用に支払い'].contains(e[1]))
+          .map((e) => [
+                e[4]
+                    .replaceAll('年', '/')
+                    .replaceAll('月', '/')
+                    .replaceAll('日', '')
+                    .replaceAll(RegExp(r'\s\d+時\d+分'), ''),
+                e[1].replaceAll('に支払い', ''),
+                e[6].replaceAll('-', '')
+              ])
+          .cast<List<String>>()
+          .toList();
     } else {
       list.forEach((e) {
         e.removeRange(2, 5);
